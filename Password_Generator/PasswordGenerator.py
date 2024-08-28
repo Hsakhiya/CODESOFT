@@ -4,7 +4,6 @@ from tkinter import *
 from tkinter.ttk import *
 root = Tk()
 root.title("Random Password Generator")
-# root.geometry("700x300")
 root.resizable(width=False,height=False)
 
 masterframe = Frame(root)
@@ -14,7 +13,7 @@ frame = Frame(masterframe,padding=10)
 frame.pack(side=LEFT, fill=BOTH, expand=True)
 
 optionframe = Frame(masterframe,padding=10)
-# optionframe.pack(side=RIGHT, fill=Y, expand=False)
+
 
 randompass = ''
 character = string.ascii_letters + string.digits + '$&!@*'
@@ -44,6 +43,7 @@ def setchar():
         character=''
         optionframe.pack(side=RIGHT, fill=Y, expand=False)
 
+# Generate Passwords
 def generate():
     global randompass
     length = data.get()
@@ -70,8 +70,8 @@ def update_character_set():
     if check_special.get():
         character += '$&!@*'
 
-length_lable = Label(frame, text="Password Length",font=(20))
-length_lable.grid(row=0, column=0, sticky=W,pady=5)
+pass_length = Label(frame, text="Password Length",font=(20))
+pass_length.grid(row=0, column=0, sticky=W,pady=5)
 
 length_entry = Entry(frame, textvariable=data, width=10,font=(15))
 length_entry.grid(row=1, column=0, sticky=W,pady=10)
@@ -83,6 +83,7 @@ password_lable.grid(row=2, column=0 )
 
 btn = Button(frame, text="Generate Password", command=generate)
 btn.grid(row=3, column=0,ipadx=50 )
+
 
 for index in range(len(option)):
     Radiobutton(frame, text=option[index], variable=get_option, value=index, command=setchar).grid(row=4 + index, column=0, sticky=W, )
